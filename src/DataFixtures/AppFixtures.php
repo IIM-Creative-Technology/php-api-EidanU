@@ -61,7 +61,7 @@ class AppFixtures extends Fixture
         $manager->flush();
         $classeId = $this->classeRepository->findAll();
 
-        for($i = 1; $i <= 10; $i++){
+        for($i = 1; $i <= 40; $i++){
             $etudiant = new Etudiant;
             $etudiant->setPrenom($faker->firstNameMale);
             $etudiant->setNom($faker->lastName);
@@ -98,11 +98,11 @@ class AppFixtures extends Fixture
               $etudiantId = $this->etudiantRepository->findAll();
               $matiereId = $this->matiereRepository->findAll();
 
-            for($i = 0; $i <= 3; $i++){
+            for($i = 0; $i <= 39; $i++){
                   $note = new Note;
                   $note->setNote(rand(0, 20));
                   $note->setEtudiants($etudiantId[$i]);
-                  $note->setMatiere($matiereId[$i]);
+                  $note->setMatiere($matiereId[rand(0,3)]);
                   $manager->persist($note);
               }
         $manager->flush();
